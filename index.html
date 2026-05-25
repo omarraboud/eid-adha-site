@@ -1,0 +1,348 @@
+```html
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eid Al-Adha Mubarak</title>
+
+<style>
+
+body{
+    margin:0;
+    overflow:hidden;
+    background:#06142e;
+    font-family:Arial;
+}
+
+/* =========================
+   الخلفية والنجوم
+========================= */
+
+.sky{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-10px);
+    }
+
+    to{
+        transform:translateY(100vh);
+    }
+}
+
+/* =========================
+   القمر
+========================= */
+
+.moon{
+    position:absolute;
+    top:60px;
+    left:80px;
+    width:120px;
+    height:120px;
+    background:#dbeafe;
+    border-radius:50%;
+    box-shadow:0 0 30px white;
+}
+
+.moon::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:30px;
+    width:120px;
+    height:120px;
+    background:#06142e;
+    border-radius:50%;
+}
+
+/* =========================
+   الفوانيس
+========================= */
+
+.lantern{
+    position:absolute;
+    width:50px;
+    height:80px;
+    background:gold;
+    border-radius:10px;
+    box-shadow:0 0 20px gold;
+    animation:swing 3s ease-in-out infinite alternate;
+}
+
+.lantern::before{
+    content:"";
+    position:absolute;
+    top:-40px;
+    left:24px;
+    width:2px;
+    height:40px;
+    background:gold;
+}
+
+@keyframes swing{
+    from{
+        transform:rotate(-5deg);
+    }
+
+    to{
+        transform:rotate(5deg);
+    }
+}
+
+/* =========================
+   النصوص
+========================= */
+
+.title-ar{
+    position:absolute;
+    top:90px;
+    width:100%;
+    text-align:center;
+    font-size:65px;
+    font-weight:bold;
+    color:#FFD700;
+    text-shadow:
+    0 0 10px gold,
+    0 0 20px gold,
+    0 0 40px gold;
+
+    animation:float 3s ease-in-out infinite;
+}
+
+.title-en{
+    position:absolute;
+    top:220px;
+    width:100%;
+    text-align:center;
+    font-size:50px;
+    font-weight:bold;
+    color:#fff7ae;
+
+    text-shadow:
+    0 0 10px gold,
+    0 0 20px gold;
+
+    animation:float2 4s ease-in-out infinite;
+}
+
+.subtitle{
+    position:absolute;
+    top:340px;
+    width:100%;
+    text-align:center;
+    font-size:35px;
+    color:#93c5fd;
+
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        opacity:0.6;
+    }
+
+    to{
+        opacity:1;
+        text-shadow:0 0 20px white;
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+@keyframes float2{
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* =========================
+   الخرفان
+========================= */
+
+.sheep{
+    position:absolute;
+    font-size:80px;
+    animation:bounce 2s infinite;
+}
+
+.sheep1{
+    bottom:70px;
+    left:55%;
+}
+
+.sheep2{
+    bottom:90px;
+    left:70%;
+    animation-delay:0.5s;
+}
+
+.sheep3{
+    bottom:60px;
+    left:82%;
+    animation-delay:1s;
+}
+
+@keyframes bounce{
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-25px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* =========================
+   الأرض
+========================= */
+
+.ground{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:120px;
+    background:#0f5132;
+}
+
+/* =========================
+   الاسم
+========================= */
+
+.name{
+    position:absolute;
+    bottom:20px;
+    left:30px;
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:3px;
+}
+
+/* =========================
+   التكبيرات
+========================= */
+
+.takbeer{
+    position:absolute;
+    top:420px;
+    width:100%;
+    text-align:center;
+    color:white;
+    font-size:24px;
+    line-height:50px;
+
+    animation:glow 3s infinite alternate;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sky" id="sky"></div>
+
+<div class="moon"></div>
+
+<div class="lantern" style="top:120px; right:120px;"></div>
+<div class="lantern" style="top:250px; right:40px;"></div>
+<div class="lantern" style="top:200px; left:40px;"></div>
+
+<div class="title-ar">
+عيد أضحى مبارك
+</div>
+
+<div class="title-en">
+Eid Al-Adha Mubarak
+</div>
+
+<div class="subtitle">
+✨ تقبل الله منا ومنكم صالح الأعمال ✨
+</div>
+
+<div class="takbeer">
+الله أكبر الله أكبر الله أكبر لا إله إلا الله<br>
+الله أكبر الله أكبر ولله الحمد
+</div>
+
+<div class="sheep sheep1">🐑</div>
+<div class="sheep sheep2">🐑</div>
+<div class="sheep sheep3">🐑</div>
+
+<div class="ground"></div>
+
+<div class="name">
+Omar Aboud
+</div>
+
+<script>
+
+/* =========================
+   إنشاء النجوم
+========================= */
+
+const sky = document.getElementById("sky");
+
+for(let i = 0; i < 200; i++){
+
+    let star = document.createElement("div");
+
+    star.classList.add("star");
+
+    star.style.left = Math.random() * 100 + "vw";
+
+    star.style.top = Math.random() * 100 + "vh";
+
+    star.style.animationDuration =
+    (Math.random() * 5 + 3) + "s";
+
+    star.style.opacity = Math.random();
+
+    sky.appendChild(star);
+}
+
+</script>
+
+</body>
+</html>
+```
